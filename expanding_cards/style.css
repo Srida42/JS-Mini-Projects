@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #d9c2ac;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+.container{
+    display: flex;
+    width: 85vw;
+    height: 75vh;
+    overflow: hidden;
+    position: relative;
+}
+.panel{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    flex: 0.3;
+    margin: 0 5px;
+    border-radius: 50px;
+    color: whitesmoke;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+}
+.panel h3 {
+    font-size: 26px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.panel:hover {
+    transform: scale(1.02);
+}
+.panel:not(.active) {
+    flex: 0.3; 
+    transform: translateX(var(--stack-offset)) scale(0.95); 
+    opacity: 0.75;
+    z-index: 1; 
+}
+.panel:nth-child(1) {
+    --stack-offset: -80%;
+}
+.panel:nth-child(2) {
+    --stack-offset: -60%;
+}
+.panel:nth-child(3) {
+    --stack-offset: -40%;
+}
+.panel:nth-child(4) {
+    --stack-offset: -20%;
+}
+.panel:nth-child(5) {
+    --stack-offset: 0%;
+}
+.panel.active{
+    flex: 5.5;
+    transform: translateX(0) scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 75px;
+    z-index: 3;
+    opacity: 1;
+}
+.panel.active h3{
+    opacity: 1;
+}
+@media(max-width: 480px){
+    .container{
+        width: 100vw;
+    }
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+        display: none;
+    }
+}
